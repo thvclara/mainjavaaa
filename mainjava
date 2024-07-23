@@ -1,0 +1,30 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class Main {
+
+    public static Date proximaDataParcela(Date dataBase, int meses) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dataBase);
+        cal.add(Calendar.MONTH, meses);
+        return cal.getTime();
+    }
+
+    public static double calcularValorParcela(double valorContrato, int mesesRestantes) {
+        double jurosMensal = 0.01; // 1% de juros simples por mês
+        double taxaPagamento = 0.02; // 2% de taxa de pagamento por parcela
+
+        double valorComJuros = valorContrato * (1 + jurosMensal * mesesRestantes);
+        double valorComTaxa = valorComJuros * (1 + taxaPagamento);
+
+        return valorComTaxa / mesesRestantes;
+    }
+
+    public static void main(String[] args) {
+        
+        String numeroContrato = "20240723-CT-12345";
+        String dataContratoStr = "23/07/2024";
+        double
